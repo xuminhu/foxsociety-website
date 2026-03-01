@@ -268,9 +268,11 @@
 
             <ul class="nav-menu">
                 {{ $currentPage := . }}
-                {{ range .Site.Params.nav }}
-                <li><a href="{{ .url | relLangURL }}" class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">{{ .name }}</a></li>
-                {{ end }}
+           <li><a href="/" class="{{ if .IsHome }}active{{ end }}">首页</a></li>
+<li><a href="/services/" class="{{ if eq .Section "services" }}active{{ end }}">服务</a></li>
+<li><a href="/cases/" class="{{ if eq .Section "cases" }}active{{ end }}">案例</a></li>
+<li><a href="/about/" class="{{ if eq .RelPermalink "/about/" }}active{{ end }}">关于我们</a></li>
+<li><a href="/contact/" class="{{ if eq .RelPermalink "/contact/" }}active{{ end }}">联系我们</a></li>
             </ul>
 
             <div class="nav-right">
