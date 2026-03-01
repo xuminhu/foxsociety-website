@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="page-header">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ if .Description }}<p>{{ .Description }}</p>{{ end }}
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        {{ .Content }}
+
+        {{ range .Pages }}
+        <article class="list-item">
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <p>{{ .Summary }}</p>
+        </article>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+.page-header { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: #fff; padding: 120px 0 80px; text-align: center; }
+.page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+.page-header p { font-size: 18px; opacity: 0.8; }
+.page-content { max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
+.list-item { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+.list-item h2 { font-size: 28px; margin-bottom: 12px; }
+.list-item h2 a { color: #1a1a1a; text-decoration: none; }
+.list-item h2 a:hover { color: #d4a574; }
+.list-item p { color: #666; font-size: 16px; line-height: 1.6; }
+</style>
+{{ end }}

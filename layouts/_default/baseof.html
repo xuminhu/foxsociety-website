@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+
+    <!-- 预加载字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #d4a574;
+            --color-accent: #c9a86c;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-bg: #fafafa;
+            --color-white: #ffffff;
+            --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+            --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --font-display: 'Playfair Display', 'Noto Serif SC', serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--color-primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            color: var(--color-text-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .lang-switch a.active,
+        .lang-switch a:hover {
+            color: var(--color-primary);
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* 主要内容区 */
+        main {
+            margin-top: 72px;
+            min-height: calc(100vh - 72px);
+        }
+
+        /* 页脚 */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--color-secondary);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--color-white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 30px 24px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+
+    {{ block "head" . }}{{ end }}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ "/" | relLangURL }}" class="logo">
+                <div class="logo-icon">狐</div>
+                <span class="logo-text">Fox Society</span>
+            </a>
+
+            <ul class="nav-menu">
+                {{ $currentPage := . }}
+                {{ range .Site.Params.nav }}
+                <li><a href="{{ .url | relLangURL }}" class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">{{ .name }}</a></li>
+                {{ end }}
+            </ul>
+
+            <div class="nav-right">
+                <div class="lang-switch">
+                    {{ range .Site.Languages }}
+                    <a href="{{ .Lang | relURL }}" class="{{ if eq .Lang $.Site.Language.Lang }}active{{ end }}">{{ .LanguageName }}</a>
+                    {{ end }}
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Fox Society</h3>
+                <p>{{ .Site.Params.description }}</p>
+            </div>
+            <div class="footer-section">
+                <h4>服务</h4>
+                <ul>
+                    <li><a href="{{ "/services/undergraduate" | relLangURL }}">本科申请</a></li>
+                    <li><a href="{{ "/services/graduate" | relLangURL }}">研究生申请</a></li>
+                    <li><a href="{{ "/services/planning" | relLangURL }}">规划服务</a></li>
+                    <li><a href="{{ "/services/background" | relLangURL }}">背景提升</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>关于</h4>
+                <ul>
+                    <li><a href="{{ "/about" | relLangURL }}">关于我们</a></li>
+                    <li><a href="{{ "/cases" | relLangURL }}">成功案例</a></li>
+                    <li><a href="{{ "/contact" | relLangURL }}">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>联系</h4>
+                <ul>
+                    <li>微信: {{ .Site.Params.wechat }}</li>
+                    <li>{{ .Site.Params.email }}</li>
+                    <li>{{ .Site.Params.address }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Year }} Fox Society 狐狸学社. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>

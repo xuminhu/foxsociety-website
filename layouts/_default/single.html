@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="page-header">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ if .Params.subtitle }}<p>{{ .Params.subtitle }}</p>{{ end }}
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <article class="content">
+            {{ .Content }}
+        </article>
+    </div>
+</div>
+
+<style>
+.page-header { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: #fff; padding: 120px 0 80px; text-align: center; }
+.page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+.page-header p { font-size: 18px; opacity: 0.8; }
+.page-content { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+.content { font-size: 17px; line-height: 1.8; color: #333; }
+.content h2 { font-size: 28px; margin: 40px 0 20px; color: #1a1a1a; }
+.content h3 { font-size: 22px; margin: 30px 0 15px; color: #333; }
+.content p { margin-bottom: 20px; }
+.content ul, .content ol { margin-bottom: 20px; padding-left: 30px; }
+.content li { margin-bottom: 10px; }
+.content strong { color: #1a1a1a; }
+</style>
+{{ end }}
