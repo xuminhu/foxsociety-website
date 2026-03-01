@@ -1,0 +1,33 @@
+name: Deploy to Tencent COS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+        extended: true
+        
+    - name: Build
+      run: hugo --minify
+      
+    - name: Deploy to Tencent COS
+      uses: zkqiang/tencent-cos-action@master
+      with:
+        args: delete -r -f / && upload -r ./public/ /
+        secret_id: ${{ secrets.TENCENT_SECRET_ID }}
+        secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
+        bucket: foxsociety-website-1313164395
+        region: ap-shanghai
