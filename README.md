@@ -110,6 +110,8 @@ date: 2024-01-01
 - 每半年更新案例内容
 - 定期检查链接有效性
 - 监控网站访问速度
+- 
+Website deployed to Tencent COS.
 
 ---
 
