@@ -1,0 +1,81 @@
+{{ define "styles" }}
+<style>
+.cases-hero {
+    padding: 120px 2rem 4rem;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    text-align: center;
+}
+.cases-hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.cases-grid {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+.case-card {
+    background: #faf8f5;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.case-school {
+    font-weight: 700;
+    color: #d4a574;
+    font-size: 1.2rem;
+}
+.case-year {
+    background: #1a1a1a;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+</style>
+{{ end }}
+
+{{ define "main" }}
+<section class="cases-hero">
+    <h1>成功案例</h1>
+    <p>每一份录取背后，都是独特的成长故事</p>
+</section>
+
+<section class="cases-grid">
+    <div class="case-card">
+        <div class="case-header">
+            <span class="case-school">哈佛大学</span>
+            <span class="case-year">2024</span>
+        </div>
+        <div class="case-student">学生 A</div>
+        <div class="case-major">经济学</div>
+    </div>
+    <div class="case-card">
+        <div class="case-header">
+            <span class="case-school">耶鲁大学</span>
+            <span class="case-year">2024</span>
+        </div>
+        <div class="case-student">学生 B</div>
+        <div class="case-major">政治学</div>
+    </div>
+    <div class="case-card">
+        <div class="case-header">
+            <span class="case-school">斯坦福大学</span>
+            <span class="case-year">2024</span>
+        </div>
+        <div class="case-student">学生 C</div>
+        <div class="case-major">计算机科学</div>
+    </div>
+</section>
+{{ end }}
