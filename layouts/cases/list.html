@@ -24,24 +24,42 @@
     border-radius: 12px;
     padding: 2rem;
     border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
-.case-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.case-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.case-direction {
+    display: inline-block;
+    background: #d4a574;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
     margin-bottom: 1rem;
 }
-.case-school {
-    font-weight: 700;
-    color: #d4a574;
-    font-size: 1.2rem;
+.case-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
 }
-.case-year {
-    background: #1a1a1a;
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+.case-schools {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.case-schools strong {
+    color: #d4a574;
+}
+.view-detail {
+    margin-top: 1.5rem;
+    color: #d4a574;
+    font-weight: 500;
 }
 </style>
 {{ end }}
@@ -53,29 +71,18 @@
 </section>
 
 <section class="cases-grid">
-    <div class="case-card">
-        <div class="case-header">
-            <span class="case-school">哈佛大学</span>
-            <span class="case-year">2024</span>
+    {{ range .Pages }}
+    <a href="{{ .RelPermalink }}" class="case-card">
+        <span class="case-direction">{{ .Params.direction }}</span>
+        <h3 class="case-name">{{ .Params.student_name }}</h3>
+        <div class="case-schools">
+            <strong>录取院校：</strong><br>
+            {{ range $index, $school := .Params.schools }}
+                {{ if $index }}、{{ end }}{{ $school }}
+            {{ end }}
         </div>
-        <div class="case-student">学生 A</div>
-        <div class="case-major">经济学</div>
-    </div>
-    <div class="case-card">
-        <div class="case-header">
-            <span class="case-school">耶鲁大学</span>
-            <span class="case-year">2024</span>
-        </div>
-        <div class="case-student">学生 B</div>
-        <div class="case-major">政治学</div>
-    </div>
-    <div class="case-card">
-        <div class="case-header">
-            <span class="case-school">斯坦福大学</span>
-            <span class="case-year">2024</span>
-        </div>
-        <div class="case-student">学生 C</div>
-        <div class="case-major">计算机科学</div>
-    </div>
+        <div class="view-detail">查看详情 →</div>
+    </a>
+    {{ end }}
 </section>
 {{ end }}
