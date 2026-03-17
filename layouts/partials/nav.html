@@ -1,0 +1,100 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">
+            <img src="/images/logo.png" alt="狐狸学社">
+            <div class="nav-logo-text">
+                <span class="cn">狐狸学社</span>
+                <span class="en">Fox Society</span>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="/">首页</a></li>
+            <li><a href="/services/">服务</a></li>
+            <li><a href="/cases/">案例</a></li>
+            <li><a href="/about/">关于</a></li>
+            <li><a href="/contact/">联系</a></li>
+        </ul>
+        <a href="/contact/" class="nav-cta">预约咨询</a>
+    </div>
+</nav>
+
+<style>
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(250, 248, 245, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.nav-logo img {
+    height: 50px;
+    width: auto;
+}
+.nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.nav-logo-text .cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.nav-logo-text .en {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    letter-spacing: 1px;
+}
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 15px;
+}
+.nav-menu a:hover {
+    color: #d4a574;
+}
+.nav-cta {
+    padding: 0.6rem 1.5rem;
+    background: #1a1a1a;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+.nav-cta:hover {
+    background: #d4a574;
+}
+@media (max-width: 968px) {
+    .nav-menu {
+        display: none;
+    }
+}
+</style>
