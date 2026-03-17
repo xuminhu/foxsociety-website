@@ -1,0 +1,66 @@
+{{ define "styles" }}
+<style>
+.services-hero {
+    padding: 120px 2rem 4rem;
+    background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd1 100%);
+    text-align: center;
+}
+.services-hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.services-grid {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.service-card {
+    padding: 2.5rem;
+    background: #faf8f5;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+</style>
+{{ end }}
+
+{{ define "main" }}
+<section class="services-hero">
+    <h1>我们的服务</h1>
+    <p>从规划到录取，全程专业陪伴</p>
+</section>
+
+<section class="services-grid">
+    <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>本科申请</h3>
+        <p>针对美本、英本等顶尖大学本科申请，提供从选校策略到文书打磨的全流程服务。</p>
+    </div>
+    <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3>研究生申请</h3>
+        <p>硕士、博士申请指导，涵盖商科、理工科、人文社科等各个专业领域。</p>
+    </div>
+    <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>长期规划</h3>
+        <p>从高中甚至初中开始的长期升学规划，系统打造竞争力。</p>
+    </div>
+    <div class="service-card">
+        <div class="service-icon">✨</div>
+        <h3>背景提升</h3>
+        <p>科研、竞赛、实习、公益活动等背景提升项目的规划与资源对接。</p>
+    </div>
+</section>
+{{ end }}
