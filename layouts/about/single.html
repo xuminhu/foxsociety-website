@@ -1,0 +1,47 @@
+{{ define "styles" }}
+<style>
+.about-hero {
+    padding: 120px 2rem 4rem;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    color: white;
+    text-align: center;
+}
+.about-hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.about-content {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+.about-quote {
+    border-left: 3px solid #d4a574;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #666;
+    font-size: 1.1rem;
+}
+</style>
+{{ end }}
+
+{{ define "main" }}
+<section class="about-hero">
+    <h1>关于狐狸学社</h1>
+    <p>专业国际升学指导，点亮名校之路</p>
+</section>
+
+<section class="about-content">
+    <h2>我们的故事</h2>
+    <p>狐狸学社取名于古希腊诗人阿尔基罗库斯的寓言：狐狸知道很多事，刺猬只知道一件大事。</p>
+    <p>我们鼓励学生像狐狸一样——保持好奇心，广泛涉猎，灵活思考。这种思维方式正是博雅教育的精髓。</p>
+    
+    <div class="about-quote">
+        "狐狸知道很多的事，刺猬则只知道一件大事，但狐狸的多元智慧让它能够适应复杂多变的世界。"
+    </div>
+    
+    <p>自2020年成立以来，我们已帮助超过200名学生进入世界顶尖学府，包括耶鲁、哈佛、牛津、剑桥等。</p>
+</section>
+{{ end }}
