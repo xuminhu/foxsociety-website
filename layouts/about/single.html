@@ -24,6 +24,42 @@
     color: #666;
     font-size: 1.1rem;
 }
+.about-video {
+    background: rgba(212,165,116,0.1);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 3rem;
+    text-align: center;
+}
+.about-video img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+.about-video h3 {
+    font-family: 'Noto Serif SC', serif;
+    margin-bottom: 12px;
+}
+.about-video p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+.watch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #d4a574, #b8925f);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.source {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+}
 </style>
 {{ end }}
 
@@ -43,5 +79,16 @@
     </div>
     
     <p>自2020年成立以来，我们已帮助超过200名学生进入世界顶尖学府，包括耶鲁、哈佛、牛津、剑桥等。</p>
+    
+    <div class="about-video">
+        <img src="/images/logo.png" alt="狐狸学社">
+        <h3>耶鲁大学校长演讲</h3>
+        <p>2017年新生入学演讲：鼓励学生们多效仿狐狸，多学习不同的思想，多考虑不同的观点。</p>
+        <a href="https://v.qq.com/x/cover/2fqbt502wd24zk9/a05453s0ian.html" target="_blank" class="watch-btn">
+            <span>▶</span>
+            <span>观看演讲视频</span>
+        </a>
+        <p class="source">来源：腾讯视频</p>
+    </div>
 </section>
 {{ end }}
