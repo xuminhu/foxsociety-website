@@ -1,82 +1,29 @@
-
-baseURL = 'https://www.foxsociety.com.cn'
+baseURL = 'https://foxsociety-website.pages.dev'
 languageCode = 'zh-CN'
 title = '狐狸学社 | Fox Society'
-# theme = 'foxsociety'
 
-# 默认语言
-defaultContentLanguage = 'zh'
-defaultContentLanguageInSubdir = false
-
-# 语言配置
-[languages]
-  [languages.zh]
-    languageName = '中文'
-    weight = 1
-    contentDir = 'content'
-    [languages.zh.params]
-      description = '专注于挖掘学生闪光点，帮助每位学生成为具有国际视野的青年学者'
-
-  [languages.en]
-    languageName = 'English'
-    weight = 2
-    contentDir = 'content/en'
-    [languages.en.params]
-      description = 'Dedicated to uncovering student potential and helping every student become a globally-minded young scholar'
-
-# 参数设置
 [params]
-  author = '狐狸学社'
-  email = 'contact@foxsociety.com.cn'
-  wechat = 'FoxSociety'
-  phone = '+86 21 XXXX XXXX'
-  address = '上海市'
+description = '专业国际升学指导，点亮名校之路'
+author = '狐狸学社'
 
-  # 社交媒体
-  [params.social]
-    wechat = 'FoxSociety'
-    weibo = ''
-
-  # 首页设置
-  [params.home]
-    heroTitle = '狐狸学社'
-    heroSubtitle = '专注于挖掘学生闪光点，帮助每位学生成为具有国际视野的青年学者'
-    heroDescription = 'FOX SOCIETY'
-
-  # 导航
-  [[params.nav]]
-    name = '首页'
-    url = '/'
-    weight = 1
-  [[params.nav]]
-    name = '服务'
-    url = '/services/'
-    weight = 2
-  [[params.nav]]
-    name = '案例'
-    url = '/cases/'
-    weight = 3
-  [[params.nav]]
-    name = '关于我们'
-    url = '/about/'
-    weight = 4
-  [[params.nav]]
-    name = '联系我们'
-    url = '/contact/'
-    weight = 5
-
-# Markdown设置
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-# 输出格式
-[outputs]
-  home = ['HTML', 'RSS']
-  page = ['HTML']
-  section = ['HTML', 'RSS']
-
-# 构建设置
-[build]
-  writeStats = true
+[menu]
+[[menu.main]]
+name = '首页'
+url = '/'
+weight = 10
+[[menu.main]]
+name = '服务'
+url = '/services/'
+weight = 20
+[[menu.main]]
+name = '案例'
+url = '/cases/'
+weight = 30
+[[menu.main]]
+name = '关于'
+url = '/about/'
+weight = 40
+[[menu.main]]
+name = '联系'
+url = '/contact/'
+weight = 50
