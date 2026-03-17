@@ -1,0 +1,142 @@
+{{ define "styles" }}
+<style>
+.case-hero {
+    padding: 120px 2rem 3rem;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+}
+.case-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.case-direction {
+    display: inline-block;
+    background: #d4a574;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.case-hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+.case-stats {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+.case-stat {
+    text-align: center;
+}
+.case-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d4a574;
+}
+.case-stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.case-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+.case-content h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: #1a1a1a;
+}
+.case-content h3 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.8rem;
+    color: #333;
+}
+.case-content p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #555;
+}
+.case-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+.case-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+    color: #555;
+}
+.case-highlight {
+    background: #f5f0e8;
+    border-left: 4px solid #d4a574;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+}
+.schools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+.school-tag {
+    background: #d4a574;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+.back-link {
+    display: inline-block;
+    margin-top: 3rem;
+    color: #d4a574;
+    text-decoration: none;
+    font-weight: 500;
+}
+</style>
+{{ end }}
+
+{{ define "main" }}
+<section class="case-hero">
+    <div class="case-container">
+        <span class="case-direction">{{ .Params.direction }}方向</span>
+        <h1>{{ .Params.student_name }}</h1>
+        <div class="case-stats">
+            {{ if .Params.sat }}
+            <div class="case-stat">
+                <div class="case-stat-value">{{ .Params.sat }}</div>
+                <div class="case-stat-label">SAT</div>
+            </div>
+            {{ end }}
+            {{ if .Params.toefl }}
+            <div class="case-stat">
+                <div class="case-stat-value">{{ .Params.toefl }}</div>
+                <div class="case-stat-label">托福</div>
+            </div>
+            {{ end }}
+            {{ if .Params.ib }}
+            <div class="case-stat">
+                <div class="case-stat-value">{{ .Params.ib }}</div>
+                <div class="case-stat-label">IB</div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<section class="case-content">
+    <h2>录取院校</h2>
+    <div class="schools-list">
+        {{ range .Params.schools }}
+        <span class="school-tag">{{ . }}</span>
+        {{ end }}
+    </div>
+    
+    {{ .Content }}
+    
+    <a href="/cases/" class="back-link">← 返回案例列表</a>
+</section>
+{{ end }}
