@@ -1,4 +1,4 @@
-baseURL = 'https://foxsociety-website.pages.dev'
+baseURL = 'https://www.foxsociety.com.cn'
 languageCode = 'zh-CN'
 title = '狐狸学社 | Fox Society'
 
@@ -27,3 +27,8 @@ weight = 40
 name = '联系'
 url = '/contact/'
 weight = 50
+
+[sitemap]
+  changefreq = 'monthly'
+  filename = 'sitemap.xml'
+  priority = 0.5
