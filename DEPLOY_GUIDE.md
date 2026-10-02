@@ -114,7 +114,7 @@ git push -u origin main
 
 ### 添加新案例
 
-1. 在 `content/cases/` 创建新文件
+1. 在 `content/zh/cases/` 创建新文件，并在 `content/en/cases/` 创建同名的英文版本
 2. 参考现有案例格式填写 front matter
 3. git add → git commit → git push
 4. 自动部署（约 2 分钟）

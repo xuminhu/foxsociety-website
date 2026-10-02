@@ -9,11 +9,13 @@
 ├── archetypes/          # 内容模板
 ├── assets/              # 资源文件（CSS/JS/图片）
 ├── content/             # 网站内容
-│   ├── cases/          # 案例
-│   ├── services/       # 服务
-│   ├── about.md        # 关于我们
-│   ├── contact.md      # 联系我们
-│   └── en/             # 英文内容
+│   ├── zh/             # 中文内容（网址 /）
+│   │   ├── cases/      # 案例
+│   │   ├── services/   # 服务
+│   │   ├── about.md    # 关于我们
+│   │   └── contact.md  # 联系我们
+│   └── en/             # 英文内容（网址 /en/），结构与 zh/ 相同
+├── i18n/                # 模板中的界面文字：zh.toml（中文）、en.toml（英文）
 ├── layouts/             # HTML 模板
 │   ├── _default/       # 默认模板
 │   └── index.html      # 首页模板
@@ -62,7 +64,7 @@ hugo --minify
 
 ### 添加新案例
 
-在 `content/cases/` 创建新的 Markdown 文件：
+在 `content/zh/cases/` 创建新的 Markdown 文件：
 
 ```markdown
 ---
@@ -78,9 +80,12 @@ date: 2024-01-01
 案例内容...
 ```
 
-### 添加英文内容
+### 添加英文内容（中英双语）
 
-在 `content/en/cases/` 创建对应英文版本。
+网站分为中文（`/`）和英文（`/en/`）两个版本，页头右上角可切换语言。
+
+- **案例、服务等页面**：在 `content/en/` 下用**相同的路径和文件名**创建英文版本，例如 `content/zh/cases/li-beijing.md` 对应 `content/en/cases/li-beijing.md`。文件名相同，语言切换按钮才能跳到对应页面。英文案例中的 `direction`、`schools` 等字段请填写英文。
+- **首页、关于我们、联系我们、服务总览页**：这些页面的文字写在 `i18n/zh.toml` 和 `i18n/en.toml` 中，修改时两个文件要同时更新（两个文件的 key 必须一致）。
 
 ## 自动部署
 

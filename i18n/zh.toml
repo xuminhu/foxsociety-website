@@ -1,0 +1,78 @@
+# 界面文字（中文）。英文版见 en.toml，两个文件的 key 需保持一致。
+
+# 导航
+navHome = "首页"
+navServices = "服务"
+navCases = "案例"
+navAbout = "关于我们"
+navContact = "联系我们"
+menu = "菜单"
+langSwitch = "切换语言"
+brandName = "狐狸学社"
+
+# 页脚
+footerServices = "服务"
+footerAbout = "关于"
+footerContact = "联系"
+serviceUndergraduate = "本科申请"
+serviceGraduate = "研究生申请"
+servicePlanning = "规划服务"
+serviceBackground = "背景提升"
+footerCases = "成功案例"
+wechatLabel = "微信："
+wechat = "微信"
+
+# 首页
+heroTitleMain = "狐狸学社"
+heroTitleAccent = "Fox Society"
+heroSubtitle = "专业国际升学指导 · 点亮名校之路"
+heroDescription = "我们相信每个学生都有独特的光芒。通过个性化的规划指导，帮助学生发现自我、突破边界，进入世界顶尖学府。"
+btnServices = "了解我们的服务"
+btnCases = "查看成功案例"
+statCases = "成功案例"
+statSatisfaction = "录取满意度"
+statSchools = "录取院校"
+
+# 服务
+servicesTitle = "我们的服务"
+servicesSubtitle = "从规划到录取，全程专业陪伴"
+cardUndergraduateTitle = "本科申请"
+cardUndergraduateText = "针对美本、英本等顶尖大学本科申请，提供从选校策略到文书打磨的全流程服务。"
+cardGraduateTitle = "研究生申请"
+cardGraduateText = "硕士、博士申请指导，涵盖商科、理工科、人文社科等各个专业领域。"
+cardPlanningTitle = "长期规划"
+cardPlanningText = "从高中甚至初中开始的长期升学规划，系统打造竞争力。"
+cardBackgroundTitle = "背景提升"
+cardBackgroundText = "科研、竞赛、实习、公益活动等背景提升项目的规划与资源对接。"
+
+# 案例
+casesTitle = "成功案例"
+casesSubtitle = "每一份录取背后，都是独特的成长故事"
+admittedTo = "录取院校："
+viewDetails = "查看详情 →"
+caseDirection = "{{ .Direction }}方向"
+schoolSeparator = "、"
+statToefl = "托福"
+admissionsHeading = "录取院校"
+backToCases = "← 返回案例列表"
+
+# 关于
+aboutTitle = "关于狐狸学社"
+aboutSubtitle = "专业国际升学指导，点亮名校之路"
+aboutStoryHeading = "我们的故事"
+aboutStory1 = "狐狸学社取名于古希腊诗人阿尔基罗库斯的寓言：狐狸知道很多事，刺猬只知道一件大事。"
+aboutStory2 = "我们鼓励学生像狐狸一样——保持好奇心，广泛涉猎，灵活思考。这种思维方式正是博雅教育的精髓。"
+aboutQuote = "\"狐狸知道很多的事，刺猬则只知道一件大事，但狐狸的多元智慧让它能够适应复杂多变的世界。\""
+aboutStory3 = "自2020年成立以来，我们已帮助超过200名学生进入世界顶尖学府，包括耶鲁、哈佛、牛津、剑桥等。"
+aboutVideoTitle = "耶鲁大学校长演讲"
+aboutVideoText = "2017年新生入学演讲：鼓励学生们多效仿狐狸，多学习不同的思想，多考虑不同的观点。"
+aboutVideoButton = "观看演讲视频"
+aboutVideoSource = "来源：腾讯视频"
+
+# 联系
+contactTitle = "联系我们"
+contactSubtitle = "开始您的升学规划之旅"
+contactAddressLabel = "地址"
+contactAddress = "上海市长宁区"
+contactQrAlt = "微信二维码"
+contactQrText = "扫码添加微信咨询"

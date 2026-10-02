@@ -1,32 +1,28 @@
 baseURL = 'https://www.foxsociety.com.cn'
-languageCode = 'zh-CN'
-title = '狐狸学社 | Fox Society'
+defaultContentLanguage = 'zh'
+defaultContentLanguageInSubdir = false
+disableKinds = ['taxonomy', 'term']
 
-[params]
-description = '专业国际升学指导，点亮名校之路'
-author = '狐狸学社'
+[languages]
+  [languages.zh]
+    contentDir = 'content/zh'
+    locale = 'zh-CN'
+    label = '中文'
+    title = '狐狸学社 | Fox Society'
+    weight = 1
+    [languages.zh.params]
+      description = '专业国际升学指导，点亮名校之路'
+      author = '狐狸学社'
 
-[menu]
-[[menu.main]]
-name = '首页'
-url = '/'
-weight = 10
-[[menu.main]]
-name = '服务'
-url = '/services/'
-weight = 20
-[[menu.main]]
-name = '案例'
-url = '/cases/'
-weight = 30
-[[menu.main]]
-name = '关于'
-url = '/about/'
-weight = 40
-[[menu.main]]
-name = '联系'
-url = '/contact/'
-weight = 50
+  [languages.en]
+    contentDir = 'content/en'
+    locale = 'en'
+    label = 'EN'
+    title = 'Fox Society | 狐狸学社'
+    weight = 2
+    [languages.en.params]
+      description = 'Professional international admissions guidance, lighting the way to top universities'
+      author = 'Fox Society'
 
 [sitemap]
   changefreq = 'monthly'

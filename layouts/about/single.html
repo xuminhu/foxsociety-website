@@ -77,30 +77,30 @@
 
 {{ define "main" }}
 <section class="about-hero">
-    <h1>关于狐狸学社</h1>
-    <p>专业国际升学指导，点亮名校之路</p>
+    <h1>{{ i18n "aboutTitle" }}</h1>
+    <p>{{ i18n "aboutSubtitle" }}</p>
 </section>
 
 <section class="about-content">
-    <h2>我们的故事</h2>
-    <p>狐狸学社取名于古希腊诗人阿尔基罗库斯的寓言：狐狸知道很多事，刺猬只知道一件大事。</p>
-    <p>我们鼓励学生像狐狸一样——保持好奇心，广泛涉猎，灵活思考。这种思维方式正是博雅教育的精髓。</p>
+    <h2>{{ i18n "aboutStoryHeading" }}</h2>
+    <p>{{ i18n "aboutStory1" }}</p>
+    <p>{{ i18n "aboutStory2" }}</p>
     
     <div class="about-quote">
-        "狐狸知道很多的事，刺猬则只知道一件大事，但狐狸的多元智慧让它能够适应复杂多变的世界。"
+        {{ i18n "aboutQuote" }}
     </div>
     
-    <p>自2020年成立以来，我们已帮助超过200名学生进入世界顶尖学府，包括耶鲁、哈佛、牛津、剑桥等。</p>
+    <p>{{ i18n "aboutStory3" }}</p>
     
     <div class="about-video">
-        <img src="/images/logo.png" alt="狐狸学社">
-        <h3>耶鲁大学校长演讲</h3>
-        <p>2017年新生入学演讲：鼓励学生们多效仿狐狸，多学习不同的思想，多考虑不同的观点。</p>
+        <img src="/images/logo.png" alt="{{ i18n "brandName" }}">
+        <h3>{{ i18n "aboutVideoTitle" }}</h3>
+        <p>{{ i18n "aboutVideoText" }}</p>
         <a href="https://v.qq.com/x/cover/2fqbt502wd24zk9/a05453s0ian.html" target="_blank" class="watch-btn">
             <span>▶</span>
-            <span>观看演讲视频</span>
+            <span>{{ i18n "aboutVideoButton" }}</span>
         </a>
-        <p class="source">来源：腾讯视频</p>
+        <p class="source">{{ i18n "aboutVideoSource" }}</p>
     </div>
 </section>
 {{ end }}

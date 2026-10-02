@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<html lang="{{ site.Language.Locale }}">
 <head>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
+    {{- range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+    {{- end }}
 
     <!-- 字体：自托管（static/fonts），不依赖 Google Fonts -->
     <link rel="preload" href="/fonts/inter/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -119,6 +122,7 @@
             font-weight: 500;
             position: relative;
             padding: 8px 0;
+            white-space: nowrap;
             transition: var(--transition);
         }
 
@@ -256,7 +260,7 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .nav-container {
                 padding: 0 16px;
             }
@@ -354,7 +358,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="{{ "/" | relLangURL }}" class="logo">
-                <img src="/images/logo.png" alt="狐狸学社">
+                <img src="/images/logo.png" alt="{{ i18n "brandName" }}">
                 <div class="logo-name">
                     <span class="cn">狐狸学社</span>
                     <span class="en">Fox Society</span>
@@ -362,21 +366,25 @@
             </a>
 
             <ul class="nav-menu" id="nav-menu">
-                {{ $currentPage := . }}
-           <li><a href="/" class="{{ if .IsHome }}active{{ end }}">首页</a></li>
-<li><a href="/services/" class="{{ if eq .Section "services" }}active{{ end }}">服务</a></li>
-<li><a href="/cases/" class="{{ if eq .Section "cases" }}active{{ end }}">案例</a></li>
-<li><a href="/about/" class="{{ if eq .RelPermalink "/about/" }}active{{ end }}">关于我们</a></li>
-<li><a href="/contact/" class="{{ if eq .RelPermalink "/contact/" }}active{{ end }}">联系我们</a></li>
+                <li><a href="{{ "" | relLangURL }}" class="{{ if .IsHome }}active{{ end }}">{{ i18n "navHome" }}</a></li>
+                <li><a href="{{ "services/" | relLangURL }}" class="{{ if eq .Section "services" }}active{{ end }}">{{ i18n "navServices" }}</a></li>
+                <li><a href="{{ "cases/" | relLangURL }}" class="{{ if eq .Section "cases" }}active{{ end }}">{{ i18n "navCases" }}</a></li>
+                <li><a href="{{ "about/" | relLangURL }}" class="{{ if eq .RelPermalink ("about/" | relLangURL) }}active{{ end }}">{{ i18n "navAbout" }}</a></li>
+                <li><a href="{{ "contact/" | relLangURL }}" class="{{ if eq .RelPermalink ("contact/" | relLangURL) }}active{{ end }}">{{ i18n "navContact" }}</a></li>
             </ul>
 
             <div class="nav-right">
-                <div class="lang-switch">
-                    {{ range .Site.Languages }}
-                    <a href="{{ .Lang | relURL }}" class="{{ if eq .Lang $.Site.Language.Lang }}active{{ end }}">{{ .LanguageName }}</a>
-                    {{ end }}
+                <div class="lang-switch" role="navigation" aria-label="{{ i18n "langSwitch" }}">
+                    {{- /* 链接到当前页面的对应语言版本；没有翻译时回到该语言首页 */}}
+                    {{- range hugo.Sites }}{{ with .Language }}
+                    {{- $lang := .Lang }}
+                    {{- $href := cond (eq $lang site.Language.Lang) $.RelPermalink "" }}
+                    {{- range $.Translations }}{{ if eq .Language.Lang $lang }}{{ $href = .RelPermalink }}{{ end }}{{ end }}
+                    {{- if not $href }}{{ $href = cond (eq $lang "zh") "/" (printf "/%s/" $lang) }}{{ end }}
+                    <a href="{{ $href }}" hreflang="{{ .Locale }}" lang="{{ .Locale }}" class="{{ if eq $lang site.Language.Lang }}active{{ end }}">{{ .Label }}</a>{{ end }}
+                    {{- end }}
                 </div>
-                <button class="mobile-menu-btn" aria-label="菜单" aria-controls="nav-menu" aria-expanded="false">
+                <button class="mobile-menu-btn" aria-label="{{ i18n "menu" }}" aria-controls="nav-menu" aria-expanded="false">
                     <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -402,26 +410,26 @@
                 <p>{{ .Site.Params.description }}</p>
             </div>
             <div class="footer-section">
-                <h4>服务</h4>
+                <h4>{{ i18n "footerServices" }}</h4>
                 <ul>
-                    <li><a href="{{ "/services/undergraduate" | relLangURL }}">本科申请</a></li>
-                    <li><a href="{{ "/services/graduate" | relLangURL }}">研究生申请</a></li>
-                    <li><a href="{{ "/services/planning" | relLangURL }}">规划服务</a></li>
-                    <li><a href="{{ "/services/background" | relLangURL }}">背景提升</a></li>
+                    <li><a href="{{ "services/undergraduate/" | relLangURL }}">{{ i18n "serviceUndergraduate" }}</a></li>
+                    <li><a href="{{ "services/graduate/" | relLangURL }}">{{ i18n "serviceGraduate" }}</a></li>
+                    <li><a href="{{ "services/planning/" | relLangURL }}">{{ i18n "servicePlanning" }}</a></li>
+                    <li><a href="{{ "services/background/" | relLangURL }}">{{ i18n "serviceBackground" }}</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>关于</h4>
+                <h4>{{ i18n "footerAbout" }}</h4>
                 <ul>
-                    <li><a href="{{ "/about" | relLangURL }}">关于我们</a></li>
-                    <li><a href="{{ "/cases" | relLangURL }}">成功案例</a></li>
-                    <li><a href="{{ "/contact" | relLangURL }}">联系我们</a></li>
+                    <li><a href="{{ "about/" | relLangURL }}">{{ i18n "navAbout" }}</a></li>
+                    <li><a href="{{ "cases/" | relLangURL }}">{{ i18n "footerCases" }}</a></li>
+                    <li><a href="{{ "contact/" | relLangURL }}">{{ i18n "navContact" }}</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>联系</h4>
+                <h4>{{ i18n "footerContact" }}</h4>
                 <ul>
-                    <li>微信：foxsociety00133</li>
+                    <li>{{ i18n "wechatLabel" }}foxsociety00133</li>
                 </ul>
             </div>
         </div>
@@ -443,7 +451,7 @@
             navbar.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => setOpen(false)));
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
             document.addEventListener('click', (e) => { if (!navbar.contains(e.target)) setOpen(false); });
-            window.addEventListener('resize', () => { if (window.innerWidth > 768) setOpen(false); });
+            window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
         })();
 
         // 导航栏滚动效果

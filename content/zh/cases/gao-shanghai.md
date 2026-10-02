@@ -6,6 +6,7 @@ schools: ['康奈尔大学', '南加州大学传媒学院', '波士顿大学传�
 sat: "1490"
 toefl: "114"
 ib: ""
+weight: 2
 date: 2024-01-01
 draft: false
 ---

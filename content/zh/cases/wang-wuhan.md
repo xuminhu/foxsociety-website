@@ -6,6 +6,7 @@ schools: ['卡内基梅隆大学工程学院', '乔治亚理工工程学院']
 sat: "1480"
 toefl: "108"
 ib: "40/42"
+weight: 4
 date: 2024-01-01
 draft: false
 ---

@@ -6,6 +6,7 @@ schools: ['加州大学伯克利分校', '埃默里大学', '北卡教堂山分�
 sat: "1500"
 toefl: "115"
 ib: "37/42"
+weight: 3
 date: 2024-01-01
 draft: false
 ---

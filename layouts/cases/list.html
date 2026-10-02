@@ -79,8 +79,8 @@
 
 {{ define "main" }}
 <section class="cases-hero">
-    <h1>成功案例</h1>
-    <p>每一份录取背后，都是独特的成长故事</p>
+    <h1>{{ i18n "casesTitle" }}</h1>
+    <p>{{ i18n "casesSubtitle" }}</p>
 </section>
 
 <section class="cases-grid">
@@ -89,12 +89,12 @@
         <span class="case-direction">{{ .Params.direction }}</span>
         <h3 class="case-name">{{ .Params.student_name }}</h3>
         <div class="case-schools">
-            <strong>录取院校：</strong><br>
+            <strong>{{ i18n "admittedTo" }}</strong><br>
             {{ range $index, $school := .Params.schools }}
-                {{ if $index }}、{{ end }}{{ $school }}
+                {{ if $index }}{{ i18n "schoolSeparator" }}{{ end }}{{ $school }}
             {{ end }}
         </div>
-        <div class="view-detail">查看详情 →</div>
+        <div class="view-detail">{{ i18n "viewDetails" }}</div>
     </a>
     {{ end }}
 </section>
