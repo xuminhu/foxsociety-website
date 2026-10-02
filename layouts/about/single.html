@@ -8,7 +8,7 @@
 }
 .about-hero h1 {
     font-family: 'Noto Serif SC', serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.9rem, 6vw, 2.5rem);
     margin-bottom: 1rem;
 }
 .about-content {
@@ -59,6 +59,18 @@
     margin-top: 15px;
     font-size: 12px;
     color: #999;
+}
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 3rem 20px 2.5rem;
+    }
+    .about-content {
+        margin: 2.5rem auto;
+        padding: 0 20px;
+    }
+    .about-video {
+        padding: 28px 20px;
+    }
 }
 </style>
 {{ end }}

@@ -46,7 +46,6 @@
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd1 100%);
-    padding-top: 72px;
 }
 .hero-container {
     max-width: 1200px;
@@ -59,7 +58,7 @@
 }
 .hero-content h1 {
     font-family: 'Noto Serif SC', serif;
-    font-size: 3.5rem;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #1a1a1a;
@@ -107,7 +106,7 @@
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 .stat-item h3 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
     color: #d4a574;
     font-weight: 700;
 }
@@ -155,6 +154,45 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
+}
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 2.5rem 0 3rem;
+    }
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 0 20px;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.25rem;
+    }
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .hero-buttons {
+        margin-bottom: 2rem;
+    }
+    .hero-buttons a {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+    .hero-stats {
+        gap: 1rem;
+        justify-content: space-between;
+    }
+    .hero-visual {
+        min-height: 0;
+        padding: 32px 24px;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .logo-main {
+        width: 120px;
+    }
 }
 </style>
 

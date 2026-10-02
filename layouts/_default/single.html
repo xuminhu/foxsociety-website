@@ -16,7 +16,7 @@
 
 <style>
 .page-header { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: #fff; padding: 120px 0 80px; text-align: center; }
-.page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+.page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 8vw, 48px); margin-bottom: 16px; }
 .page-header p { font-size: 18px; opacity: 0.8; }
 .page-content { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
 .content { font-size: 17px; line-height: 1.8; color: #333; }
@@ -26,5 +26,10 @@
 .content ul, .content ol { margin-bottom: 20px; padding-left: 30px; }
 .content li { margin-bottom: 10px; }
 .content strong { color: #1a1a1a; }
+@media (max-width: 768px) {
+    .page-header { padding: 48px 20px 40px; }
+    .page-header p { font-size: 16px; }
+    .page-content { padding: 40px 20px; }
+}
 </style>
 {{ end }}
