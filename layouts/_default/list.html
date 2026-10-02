@@ -21,7 +21,7 @@
 
 <style>
 .page-header { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: #fff; padding: 120px 0 80px; text-align: center; }
-.page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+.page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 8vw, 48px); margin-bottom: 16px; }
 .page-header p { font-size: 18px; opacity: 0.8; }
 .page-content { max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
 .list-item { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
@@ -29,5 +29,10 @@
 .list-item h2 a { color: #1a1a1a; text-decoration: none; }
 .list-item h2 a:hover { color: #d4a574; }
 .list-item p { color: #666; font-size: 16px; line-height: 1.6; }
+@media (max-width: 768px) {
+    .page-header { padding: 48px 20px 40px; }
+    .page-header p { font-size: 16px; }
+    .page-content { padding: 40px 20px; }
+}
 </style>
 {{ end }}

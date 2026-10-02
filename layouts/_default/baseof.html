@@ -81,24 +81,30 @@
             color: var(--color-primary);
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
+        .logo img {
+            height: 50px;
+            width: auto;
         }
 
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
+        .logo-name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-name .cn {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary);
+            font-family: var(--font-serif);
+        }
+
+        .logo-name .en {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-light);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
         }
 
         .nav-menu {
@@ -163,12 +169,17 @@
             background: rgba(212, 165, 116, 0.1);
         }
 
+        .lang-switch a:empty {
+            display: none;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
             padding: 8px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* 主要内容区 */
@@ -242,18 +253,97 @@
         }
 
         /* 响应式 */
+        .mobile-menu-btn .icon-close {
+            display: none;
+        }
+
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
+            .logo-name .cn {
+                font-size: 16px;
+            }
+
+            .logo-name .en {
+                font-size: 12px;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
             .nav-menu {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 16px 16px;
+                background: var(--color-white);
+                box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            }
+
+            .navbar.menu-open .nav-menu {
+                display: flex;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 14px 4px;
+                font-size: 16px;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+            }
+
+            .nav-menu li:last-child a {
+                border-bottom: none;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .nav-menu a.active {
+                color: var(--color-secondary);
             }
 
             .mobile-menu-btn {
                 display: block;
+                color: var(--color-primary);
+            }
+
+            .navbar.menu-open .icon-open {
+                display: none;
+            }
+
+            .navbar.menu-open .icon-close {
+                display: block;
+            }
+
+            .footer {
+                padding: 40px 0 24px;
             }
 
             .footer-content {
-                grid-template-columns: 1fr;
+                padding: 0 20px;
+                grid-template-columns: 1fr 1fr;
                 gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                margin-top: 30px;
+                padding: 24px 20px 0;
             }
         }
     </style>
@@ -265,16 +355,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="{{ "/" | relLangURL }}" class="logo">
-               <div style="display: flex; align-items: center; gap: 12px;">
-  <img src="/images/logo.png" alt="狐狸学社" style="height: 50px; width: auto;">
-  <div style="display: flex; flex-direction: column; line-height: 1.2;">
-    <span style="font-size: 18px; font-weight: 700; color: #1a1a1a; font-family: 'Noto Serif SC', serif;">狐狸学社</span>
-    <span style="font-size: 14px; font-weight: 500; color: #666; font-family: 'Playfair Display', serif; letter-spacing: 1px;">Fox Society</span>
-  </div>
-</div>
+                <img src="/images/logo.png" alt="狐狸学社">
+                <div class="logo-name">
+                    <span class="cn">狐狸学社</span>
+                    <span class="en">Fox Society</span>
+                </div>
             </a>
 
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 {{ $currentPage := . }}
            <li><a href="/" class="{{ if .IsHome }}active{{ end }}">首页</a></li>
 <li><a href="/services/" class="{{ if eq .Section "services" }}active{{ end }}">服务</a></li>
@@ -289,11 +377,15 @@
                     <a href="{{ .Lang | relURL }}" class="{{ if eq .Lang $.Site.Language.Lang }}active{{ end }}">{{ .LanguageName }}</a>
                     {{ end }}
                 </div>
-                <button class="mobile-menu-btn" aria-label="Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button class="mobile-menu-btn" aria-label="菜单" aria-controls="nav-menu" aria-expanded="false">
+                    <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
                     </svg>
                 </button>
             </div>
@@ -340,6 +432,21 @@
     </footer>
 
     <script>
+        // 移动端菜单
+        (function () {
+            const navbar = document.querySelector('.navbar');
+            const btn = navbar.querySelector('.mobile-menu-btn');
+            const setOpen = (open) => {
+                navbar.classList.toggle('menu-open', open);
+                btn.setAttribute('aria-expanded', open);
+            };
+            btn.addEventListener('click', () => setOpen(!navbar.classList.contains('menu-open')));
+            navbar.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+            document.addEventListener('click', (e) => { if (!navbar.contains(e.target)) setOpen(false); });
+            window.addEventListener('resize', () => { if (window.innerWidth > 768) setOpen(false); });
+        })();
+
         // 导航栏滚动效果
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
