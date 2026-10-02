@@ -6,6 +6,7 @@ schools: ['康奈尔大学', '哥伦比亚大学']
 sat: "1420"
 toefl: "110"
 ib: ""
+weight: 5
 date: 2024-01-01
 draft: false
 ---

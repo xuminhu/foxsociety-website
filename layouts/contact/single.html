@@ -59,28 +59,28 @@
 
 {{ define "main" }}
 <section class="contact-hero">
-    <h1>联系我们</h1>
-    <p>开始您的升学规划之旅</p>
+    <h1>{{ i18n "contactTitle" }}</h1>
+    <p>{{ i18n "contactSubtitle" }}</p>
 </section>
 
 <section class="contact-card">
     <div class="contact-item">
         <div class="icon">📍</div>
         <div>
-            <div style="font-size: 13px; color: #666;">地址</div>
-            <div style="font-size: 18px; font-weight: 600;">上海市长宁区</div>
+            <div style="font-size: 13px; color: #666;">{{ i18n "contactAddressLabel" }}</div>
+            <div style="font-size: 18px; font-weight: 600;">{{ i18n "contactAddress" }}</div>
         </div>
     </div>
     <div class="contact-item">
         <div class="icon">💬</div>
         <div>
-            <div style="font-size: 13px; color: #666;">微信</div>
+            <div style="font-size: 13px; color: #666;">{{ i18n "wechat" }}</div>
             <div style="font-size: 18px; font-weight: 600;">foxsociety00133</div>
         </div>
     </div>
     <div class="qr-code">
-        <img src="/images/wechat-qr.png" alt="微信二维码">
-        <p style="margin-top: 15px; color: #666;">扫码添加微信咨询</p>
+        <img src="/images/wechat-qr.png" alt="{{ i18n "contactQrAlt" }}">
+        <p style="margin-top: 15px; color: #666;">{{ i18n "contactQrText" }}</p>
     </div>
 </section>
 {{ end }}

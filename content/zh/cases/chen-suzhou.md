@@ -6,6 +6,7 @@ schools: ['加州大学伯克利分校哈斯商学院', '卡内基梅隆大学�
 sat: "1500"
 toefl: "114"
 ib: "IBDP单科"
+weight: 6
 date: 2024-01-01
 draft: false
 ---

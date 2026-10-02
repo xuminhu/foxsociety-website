@@ -54,30 +54,30 @@
 
 {{ define "main" }}
 <section class="services-hero">
-    <h1>我们的服务</h1>
-    <p>从规划到录取，全程专业陪伴</p>
+    <h1>{{ i18n "servicesTitle" }}</h1>
+    <p>{{ i18n "servicesSubtitle" }}</p>
 </section>
 
 <section class="services-grid">
     <div class="service-card">
         <div class="service-icon">🎯</div>
-        <h3>本科申请</h3>
-        <p>针对美本、英本等顶尖大学本科申请，提供从选校策略到文书打磨的全流程服务。</p>
+        <h3>{{ i18n "cardUndergraduateTitle" }}</h3>
+        <p>{{ i18n "cardUndergraduateText" }}</p>
     </div>
     <div class="service-card">
         <div class="service-icon">🎓</div>
-        <h3>研究生申请</h3>
-        <p>硕士、博士申请指导，涵盖商科、理工科、人文社科等各个专业领域。</p>
+        <h3>{{ i18n "cardGraduateTitle" }}</h3>
+        <p>{{ i18n "cardGraduateText" }}</p>
     </div>
     <div class="service-card">
         <div class="service-icon">📋</div>
-        <h3>长期规划</h3>
-        <p>从高中甚至初中开始的长期升学规划，系统打造竞争力。</p>
+        <h3>{{ i18n "cardPlanningTitle" }}</h3>
+        <p>{{ i18n "cardPlanningText" }}</p>
     </div>
     <div class="service-card">
         <div class="service-icon">✨</div>
-        <h3>背景提升</h3>
-        <p>科研、竞赛、实习、公益活动等背景提升项目的规划与资源对接。</p>
+        <h3>{{ i18n "cardBackgroundTitle" }}</h3>
+        <p>{{ i18n "cardBackgroundText" }}</p>
     </div>
 </section>
 {{ end }}

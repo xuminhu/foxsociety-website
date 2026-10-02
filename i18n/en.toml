@@ -1,0 +1,78 @@
+# Interface text (English). Keys must match zh.toml.
+
+# Navigation
+navHome = "Home"
+navServices = "Services"
+navCases = "Success Stories"
+navAbout = "About Us"
+navContact = "Contact"
+menu = "Menu"
+langSwitch = "Switch language"
+brandName = "Fox Society"
+
+# Footer
+footerServices = "Services"
+footerAbout = "About"
+footerContact = "Contact"
+serviceUndergraduate = "Undergraduate Admissions"
+serviceGraduate = "Graduate Admissions"
+servicePlanning = "Planning Services"
+serviceBackground = "Profile Building"
+footerCases = "Success Stories"
+wechatLabel = "WeChat: "
+wechat = "WeChat"
+
+# Home
+heroTitleMain = "Fox Society"
+heroTitleAccent = "狐狸学社"
+heroSubtitle = "Professional international admissions guidance · Lighting the way to top universities"
+heroDescription = "We believe every student has a unique spark. Through personalized planning and guidance, we help students discover themselves, push past their limits, and gain admission to the world's top universities."
+btnServices = "Explore Our Services"
+btnCases = "View Success Stories"
+statCases = "Success stories"
+statSatisfaction = "Admission satisfaction"
+statSchools = "Universities admitted to"
+
+# Services
+servicesTitle = "Our Services"
+servicesSubtitle = "From planning to admission, expert support every step of the way"
+cardUndergraduateTitle = "Undergraduate Admissions"
+cardUndergraduateText = "End-to-end support for undergraduate applications to top universities in the US, UK and beyond, from school-selection strategy to polished essays."
+cardGraduateTitle = "Graduate Admissions"
+cardGraduateText = "Guidance for master's and PhD applications across business, STEM, the humanities and the social sciences."
+cardPlanningTitle = "Long-term Planning"
+cardPlanningText = "Long-term admissions planning that starts in high school or even middle school, building a competitive profile step by step."
+cardBackgroundTitle = "Profile Building"
+cardBackgroundText = "Planning and connections for research, competitions, internships, community service and other profile-building projects."
+
+# Cases
+casesTitle = "Success Stories"
+casesSubtitle = "Behind every admission is a unique story of growth"
+admittedTo = "Admitted to:"
+viewDetails = "View details →"
+caseDirection = "{{ .Direction }}"
+schoolSeparator = ", "
+statToefl = "TOEFL"
+admissionsHeading = "Admissions"
+backToCases = "← Back to all stories"
+
+# About
+aboutTitle = "About Fox Society"
+aboutSubtitle = "Professional international admissions guidance, lighting the way to top universities"
+aboutStoryHeading = "Our Story"
+aboutStory1 = "Fox Society takes its name from a fable by the ancient Greek poet Archilochus: the fox knows many things, but the hedgehog knows one big thing."
+aboutStory2 = "We encourage students to be like the fox: stay curious, explore widely and think flexibly. This way of thinking is the essence of a liberal arts education."
+aboutQuote = "\"The fox knows many things, while the hedgehog knows one big thing. But the fox's many-sided wisdom lets it adapt to a complex, ever-changing world.\""
+aboutStory3 = "Since our founding in 2020, we have helped more than 200 students gain admission to the world's top universities, including Yale, Harvard, Oxford and Cambridge."
+aboutVideoTitle = "Yale President's Address"
+aboutVideoText = "From the 2017 address to incoming freshmen, encouraging students to be more like the fox: to learn different ideas and consider different perspectives."
+aboutVideoButton = "Watch the speech"
+aboutVideoSource = "Source: Tencent Video"
+
+# Contact
+contactTitle = "Contact Us"
+contactSubtitle = "Begin your admissions planning journey"
+contactAddressLabel = "Address"
+contactAddress = "Changning District, Shanghai"
+contactQrAlt = "WeChat QR code"
+contactQrText = "Scan to add us on WeChat"

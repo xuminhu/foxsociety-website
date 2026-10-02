@@ -4,33 +4,30 @@
 <section class="hero">
     <div class="hero-container">
         <div class="hero-content">
-            <h1>狐狸学社 <span>Fox Society</span></h1>
-            <p class="hero-subtitle">专业国际升学指导 · 点亮名校之路</p>
-            <p class="hero-description">
-                我们相信每个学生都有独特的光芒。通过个性化的规划指导，
-                帮助学生发现自我、突破边界，进入世界顶尖学府。
-            </p>
+            <h1>{{ i18n "heroTitleMain" }} <span>{{ i18n "heroTitleAccent" }}</span></h1>
+            <p class="hero-subtitle">{{ i18n "heroSubtitle" }}</p>
+            <p class="hero-description">{{ i18n "heroDescription" }}</p>
             <div class="hero-buttons">
-                <a href="/services/" class="btn-primary">了解我们的服务</a>
-                <a href="/cases/" class="btn-secondary">查看成功案例</a>
+                <a href="{{ "services/" | relLangURL }}" class="btn-primary">{{ i18n "btnServices" }}</a>
+                <a href="{{ "cases/" | relLangURL }}" class="btn-secondary">{{ i18n "btnCases" }}</a>
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
                     <h3>1000+</h3>
-                    <p>成功案例</p>
+                    <p>{{ i18n "statCases" }}</p>
                 </div>
                 <div class="stat-item">
                     <h3>98%</h3>
-                    <p>录取满意度</p>
+                    <p>{{ i18n "statSatisfaction" }}</p>
                 </div>
                 <div class="stat-item">
                     <h3>100+</h3>
-                    <p>录取院校</p>
+                    <p>{{ i18n "statSchools" }}</p>
                 </div>
             </div>
         </div>
         <div class="hero-visual">
-            <img src="/images/logo.png" alt="狐狸学社" class="logo-main">
+            <img src="/images/logo.png" alt="{{ i18n "brandName" }}" class="logo-main">
             <div class="brand-text">
                 <div class="cn">狐狸学社</div>
                 <div class="en">Fox Society</div>
@@ -156,13 +153,13 @@
     font-weight: 600;
     letter-spacing: 2px;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .hero {
         min-height: auto;
         padding: 2.5rem 0 3rem;
     }
     .hero-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2.5rem;
         padding: 0 20px;
     }
@@ -184,6 +181,14 @@
     .hero-stats {
         gap: 1rem;
         justify-content: space-between;
+    }
+    .stat-item {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+    .stat-item p {
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
     .hero-visual {
         min-height: 0;

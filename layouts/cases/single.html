@@ -125,7 +125,7 @@
 {{ define "main" }}
 <section class="case-hero">
     <div class="case-container">
-        <span class="case-direction">{{ .Params.direction }}方向</span>
+        <span class="case-direction">{{ i18n "caseDirection" (dict "Direction" .Params.direction) }}</span>
         <h1>{{ .Params.student_name }}</h1>
         <div class="case-stats">
             {{ if .Params.sat }}
@@ -137,7 +137,7 @@
             {{ if .Params.toefl }}
             <div class="case-stat">
                 <div class="case-stat-value">{{ .Params.toefl }}</div>
-                <div class="case-stat-label">托福</div>
+                <div class="case-stat-label">{{ i18n "statToefl" }}</div>
             </div>
             {{ end }}
             {{ if .Params.ib }}
@@ -151,7 +151,7 @@
 </section>
 
 <section class="case-content">
-    <h2>录取院校</h2>
+    <h2>{{ i18n "admissionsHeading" }}</h2>
     <div class="schools-list">
         {{ range .Params.schools }}
         <span class="school-tag">{{ . }}</span>
@@ -160,6 +160,6 @@
     
     {{ .Content }}
     
-    <a href="/cases/" class="back-link">← 返回案例列表</a>
+    <a href="{{ "cases/" | relLangURL }}" class="back-link">{{ i18n "backToCases" }}</a>
 </section>
 {{ end }}

@@ -6,6 +6,7 @@ schools: ['南加州大学', '密歇根大学', '波士顿大学']
 sat: "1450"
 toefl: "108"
 ib: ""
+weight: 1
 date: 2024-01-01
 draft: false
 ---

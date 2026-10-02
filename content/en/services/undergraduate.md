@@ -1,42 +1,44 @@
 ---
 title: "Undergraduate Admissions"
+icon: "🎓"
+description: "Fox Society undergraduate admissions service"
 draft: false
 ---
 
 ## Undergraduate Admissions Service
 
-We collaborate with top university alumni, professors, and research resources to provide the best application services.
+We bring together alumni of top universities in China and abroad, professors, and a wide network of research and competition resources to give students the best possible application support.
 
-### Services Include
+### What's Included
 
-1. **Academic Direction Guidance**
-   - Major selection and career planning
-   - Academic interest development
+1. **Academic Direction**
+   - Choosing a major and planning a career path
+   - Discovering and developing academic interests
    - Course selection advice
 
 2. **Timeline Planning**
-   - Four-year high school planning
-   - Standardized test scheduling
-   - Activity and competition timeline
+   - A complete four-year high school plan
+   - Scheduling standardized tests
+   - Timelines for activities and competitions
 
 3. **School Selection**
-   - Comprehensive background assessment
-   - Reach, match, and safety school lists
+   - A full assessment of the student's profile
+   - Reach, match and safety school lists
    - Early application strategy
 
 4. **Activity Design**
    - Personalized activity planning
    - Leadership development
-   - Community service projects
+   - Community service and nonprofit projects
 
 5. **Application Essays**
-   - Personal statement brainstorming
-   - Supplemental essay guidance
+   - Brainstorming and revising the personal statement
+   - Guidance on supplemental essays
    - Recommendation letter strategy
 
-### Advantages
+### Why Fox Society
 
-- One-on-one dedicated mentoring
-- Top university mentor team
-- Rich successful case experience
-- Post-admission continuous service
+- One-on-one support from start to finish
+- A mentor team from top universities
+- Experience from many successful cases
+- Continued support after admission
