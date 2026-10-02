@@ -6,8 +6,6 @@ disableKinds = ['taxonomy', 'term']
 [languages]
   [languages.zh]
     contentDir = 'content/zh'
-    locale = 'zh-CN'
-    label = '中文'
     title = '狐狸学社 | Fox Society'
     weight = 1
     [languages.zh.params]
@@ -16,8 +14,6 @@ disableKinds = ['taxonomy', 'term']
 
   [languages.en]
     contentDir = 'content/en'
-    locale = 'en'
-    label = 'EN'
     title = 'Fox Society | 狐狸学社'
     weight = 2
     [languages.en.params]

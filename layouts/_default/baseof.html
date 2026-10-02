@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.Locale }}">
+{{- $locales := dict "zh" "zh-CN" "en" "en" -}}
+<html lang="{{ index $locales .Language.Lang }}">
 <head>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
@@ -8,7 +9,7 @@
     <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
     {{- range .AllTranslations }}
-    <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+    <link rel="alternate" hreflang="{{ index $locales .Language.Lang }}" href="{{ .Permalink }}">
     {{- end }}
 
     <!-- 字体：自托管（static/fonts），不依赖 Google Fonts -->
@@ -357,7 +358,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="{{ "/" | relLangURL }}" class="logo">
+            <a href="{{ site.Home.RelPermalink }}" class="logo">
                 <img src="/images/logo.png" alt="{{ i18n "brandName" }}">
                 <div class="logo-name">
                     <span class="cn">狐狸学社</span>
@@ -366,7 +367,7 @@
             </a>
 
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="{{ "" | relLangURL }}" class="{{ if .IsHome }}active{{ end }}">{{ i18n "navHome" }}</a></li>
+                <li><a href="{{ site.Home.RelPermalink }}" class="{{ if .IsHome }}active{{ end }}">{{ i18n "navHome" }}</a></li>
                 <li><a href="{{ "services/" | relLangURL }}" class="{{ if eq .Section "services" }}active{{ end }}">{{ i18n "navServices" }}</a></li>
                 <li><a href="{{ "cases/" | relLangURL }}" class="{{ if eq .Section "cases" }}active{{ end }}">{{ i18n "navCases" }}</a></li>
                 <li><a href="{{ "about/" | relLangURL }}" class="{{ if eq .RelPermalink ("about/" | relLangURL) }}active{{ end }}">{{ i18n "navAbout" }}</a></li>
@@ -375,13 +376,15 @@
 
             <div class="nav-right">
                 <div class="lang-switch" role="navigation" aria-label="{{ i18n "langSwitch" }}">
-                    {{- /* 链接到当前页面的对应语言版本；没有翻译时回到该语言首页 */}}
-                    {{- range hugo.Sites }}{{ with .Language }}
-                    {{- $lang := .Lang }}
-                    {{- $href := cond (eq $lang site.Language.Lang) $.RelPermalink "" }}
-                    {{- range $.Translations }}{{ if eq .Language.Lang $lang }}{{ $href = .RelPermalink }}{{ end }}{{ end }}
-                    {{- if not $href }}{{ $href = cond (eq $lang "zh") "/" (printf "/%s/" $lang) }}{{ end }}
-                    <a href="{{ $href }}" hreflang="{{ .Locale }}" lang="{{ .Locale }}" class="{{ if eq $lang site.Language.Lang }}active{{ end }}">{{ .Label }}</a>{{ end }}
+                    {{- /* 链接到当前页面的对应语言版本；没有翻译时回到该语言首页。
+                         只用新旧 Hugo 版本都支持的写法（Cloudflare Pages 默认的 Hugo 版本较旧）。 */}}
+                    {{- $labels := dict "zh" "中文" "en" "EN" }}
+                    {{- $homes := dict "zh" "/" "en" "/en/" }}
+                    {{- range slice "zh" "en" }}
+                    {{- $lang := . }}
+                    {{- $href := index $homes $lang }}
+                    {{- range $.AllTranslations }}{{ if eq .Language.Lang $lang }}{{ $href = .RelPermalink }}{{ end }}{{ end }}
+                    <a href="{{ $href }}" hreflang="{{ index $locales $lang }}" lang="{{ index $locales $lang }}" class="{{ if eq $lang $.Language.Lang }}active{{ end }}">{{ index $labels $lang }}</a>
                     {{- end }}
                 </div>
                 <button class="mobile-menu-btn" aria-label="{{ i18n "menu" }}" aria-controls="nav-menu" aria-expanded="false">
