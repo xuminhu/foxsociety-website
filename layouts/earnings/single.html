@@ -1,0 +1,547 @@
+{{ define "styles" }}
+<style>
+.earn-hero {
+    padding: 100px 24px 56px;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    color: #fff;
+    text-align: center;
+}
+.earn-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+    margin-bottom: 12px;
+}
+.earn-hero p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.8);
+}
+.earn-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+}
+.earn-panel {
+    background: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    padding: 24px;
+    margin-top: -32px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1.4fr 1fr 1fr auto;
+    gap: 16px;
+    align-items: end;
+}
+.earn-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 6px;
+}
+.earn-field input,
+.earn-field select {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-text);
+}
+.earn-field input:focus,
+.earn-field select:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(212,165,116,0.25);
+}
+.earn-reset {
+    font: inherit;
+    font-size: 15px;
+    padding: 10px 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-text);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.earn-reset:hover { border-color: var(--color-secondary); }
+.earn-summary {
+    margin: 28px 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 24px;
+}
+.earn-count {
+    font-size: 15px;
+    color: var(--color-text-light);
+}
+.earn-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 14px;
+    color: var(--color-text-light);
+}
+.earn-stats b {
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+}
+.earn-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+.earn-item {
+    background: var(--color-white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 240px;
+    gap: 16px;
+    align-items: center;
+}
+.earn-name {
+    min-width: 0;
+}
+.earn-name .zh {
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.4;
+}
+.earn-name .en {
+    font-size: 13px;
+    color: var(--color-text-light);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+.earn-link {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+}
+.earn-link:hover .zh,
+.earn-link:focus-visible .zh {
+    color: #b8925f;
+    text-decoration: underline;
+}
+.earn-state {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 5px;
+    margin-left: 6px;
+    vertical-align: 2px;
+}
+.earn-money {
+    text-align: right;
+}
+.earn-money .amt {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+}
+.earn-money .amt small {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-light);
+}
+.earn-bar {
+    height: 6px;
+    background: #f0ebe4;
+    border-radius: 3px;
+    margin: 6px 0 6px auto;
+    overflow: hidden;
+}
+.earn-bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #d4a574, #b8925f);
+    border-radius: 3px;
+}
+.earn-meta {
+    font-size: 12px;
+    color: var(--color-text-light);
+    line-height: 1.5;
+}
+.earn-flag {
+    display: inline-block;
+    font-size: 12px;
+    color: #a0442c;
+    background: rgba(160,68,44,0.08);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-top: 4px;
+}
+.earn-status {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--color-text-light);
+}
+.earn-more {
+    display: block;
+    margin: 24px auto 0;
+    font: inherit;
+    font-size: 15px;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #d4a574, #b8925f);
+    color: #1a1a1a;
+    font-weight: 600;
+    cursor: pointer;
+}
+.earn-notes {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+    color: var(--color-text-light);
+    line-height: 1.8;
+}
+.earn-notes h2 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+.earn-notes p { margin-bottom: 12px; }
+.earn-cta {
+    margin-top: 32px;
+    padding: 28px;
+    border-radius: 16px;
+    background: rgba(212,165,116,0.1);
+    text-align: center;
+}
+.earn-cta p { margin-bottom: 16px; color: var(--color-text); }
+.earn-cta a {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #d4a574, #b8925f);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+}
+@media (max-width: 900px) {
+    .earn-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+    .earn-field.wide { grid-column: 1 / -1; }
+    .earn-reset { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+    .earn-hero { padding: 48px 16px 48px; }
+    .earn-wrap { padding: 0 16px 48px; }
+    .earn-panel { padding: 16px; gap: 12px; }
+    .earn-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 14px 16px;
+    }
+    .earn-money { text-align: left; }
+    .earn-bar { margin-left: 0; }
+}
+</style>
+{{ end }}
+
+{{ define "main" }}
+<section class="earn-hero">
+    <h1>{{ i18n "earningsTitle" }}</h1>
+    <p>{{ i18n "earningsSubtitle" }}</p>
+</section>
+
+<div class="earn-wrap">
+    <form class="earn-panel" id="earn-form" role="search" onsubmit="return false">
+        <div class="earn-field wide">
+            <label for="earn-school">{{ i18n "earningsSchoolLabel" }}</label>
+            <input id="earn-school" type="search" autocomplete="off" placeholder="{{ i18n "earningsSchoolPlaceholder" }}">
+        </div>
+        <div class="earn-field wide">
+            <label for="earn-major">{{ i18n "earningsMajorLabel" }}</label>
+            <input id="earn-major" type="search" autocomplete="off" placeholder="{{ i18n "earningsMajorPlaceholder" }}">
+        </div>
+        <div class="earn-field">
+            <label for="earn-state">{{ i18n "earningsStateLabel" }}</label>
+            <select id="earn-state"><option value="">{{ i18n "earningsStateAll" }}</option></select>
+        </div>
+        <div class="earn-field">
+            <label for="earn-sort">{{ i18n "earningsSortLabel" }}</label>
+            <select id="earn-sort">
+                <option value="high">{{ i18n "earningsSortHigh" }}</option>
+                <option value="low">{{ i18n "earningsSortLow" }}</option>
+                <option value="school">{{ i18n "earningsSortSchool" }}</option>
+            </select>
+        </div>
+        <button type="button" class="earn-reset" id="earn-reset">{{ i18n "earningsReset" }}</button>
+    </form>
+
+    <div class="earn-summary" aria-live="polite">
+        <span class="earn-count" id="earn-count"></span>
+        <span class="earn-stats" id="earn-stats"></span>
+    </div>
+    <p class="earn-status" id="earn-status">{{ i18n "earningsLoading" }}</p>
+    <ol class="earn-list" id="earn-list"></ol>
+    <button type="button" class="earn-more" id="earn-more" hidden>{{ i18n "earningsLoadMore" }}</button>
+
+    <section class="earn-notes">
+        <h2>{{ i18n "earningsAboutHeading" }}</h2>
+        <p>{{ i18n "earningsAbout1" }}</p>
+        <p>{{ i18n "earningsAbout2" }}</p>
+        <p>{{ i18n "earningsAbout3" }}</p>
+        <p>{{ i18n "earningsTranslationNote" }}</p>
+        <p>{{ i18n "earningsSourceLabel" }}{{ i18n "earningsSource" }}</p>
+        <div class="earn-cta">
+            <p>{{ i18n "earningsCta" }}</p>
+            <a href="{{ "contact/" | relLangURL }}">{{ i18n "earningsCtaButton" }}</a>
+        </div>
+    </section>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+{{- $t := dict
+    "count" (i18n "earningsCount")
+    "none" (i18n "earningsNone")
+    "median" (i18n "earningsMedianOf")
+    "highest" (i18n "earningsHighest")
+    "lowest" (i18n "earningsLowest")
+    "cohort" (i18n "earningsCohort")
+    "netPrice" (i18n "earningsNetPrice")
+    "below" (i18n "earningsBelowBenchmark")
+    "filterSchool" (i18n "earningsFilterSchool")
+    "filterMajor" (i18n "earningsFilterMajor")
+    "perYear" (i18n "earningsPerYear")
+    "loadError" (i18n "earningsLoadError")
+-}}
+<script>
+(function () {
+    const T = {{ $t | jsonify | safeJS }};
+    const LANG = {{ .Language.Lang }};
+    const PAGE = 50;
+    const BAR_MAX = 300000;
+
+    const $ = (id) => document.getElementById(id);
+    const els = {
+        school: $('earn-school'), major: $('earn-major'), state: $('earn-state'),
+        sort: $('earn-sort'), reset: $('earn-reset'), count: $('earn-count'),
+        stats: $('earn-stats'), status: $('earn-status'), list: $('earn-list'), more: $('earn-more'),
+    };
+    const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+    const num = new Intl.NumberFormat('en-US');
+    const fill = (tpl, k, v) => tpl.replace('{' + k + '}', v);
+    const norm = (s) => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
+        .replace(/[.,'’&()\-\/]/g, ' ').replace(/\s+/g, ' ').trim();
+
+    let data = null;
+    let schoolHay = [], majorHay = [];
+    let schoolId = null, majorId = null;  // set when the user clicks a name: exact match
+    let results = [], shown = 0;
+
+    function matcher(query, hay) {
+        const tokens = norm(query).split(' ').filter(Boolean);
+        if (!tokens.length) return null;
+        const ok = new Uint8Array(hay.length);
+        for (let i = 0; i < hay.length; i++) {
+            ok[i] = tokens.every((t) => hay[i].includes(t)) ? 1 : 0;
+        }
+        return ok;
+    }
+
+    function median(sorted) {
+        const n = sorted.length, m = n >> 1;
+        return n % 2 ? sorted[m] : Math.round((sorted[m - 1] + sorted[m]) / 2);
+    }
+
+    function run() {
+        const schoolOk = schoolId !== null ? null : matcher(els.school.value, schoolHay);
+        const majorOk = majorId !== null ? null : matcher(els.major.value, majorHay);
+        const state = els.state.value;
+        const S = data.schools;
+
+        results = data.programs.filter((p) =>
+            (schoolId === null ? (!schoolOk || schoolOk[p[0]]) : p[0] === schoolId) &&
+            (majorId === null ? (!majorOk || majorOk[p[1]]) : p[1] === majorId) &&
+            (!state || S[p[0]][2] === state));
+
+        const sort = els.sort.value;
+        if (sort === 'low') {
+            results.sort((a, b) => a[2] - b[2]);
+        } else if (sort === 'school') {
+            const key = LANG === 'zh' ? 1 : 0;
+            const coll = new Intl.Collator(LANG === 'zh' ? 'zh-CN' : 'en');
+            results.sort((a, b) => coll.compare(S[a[0]][key], S[b[0]][key]) || b[2] - a[2]);
+        }  // 'high' is the order the data file ships in
+
+        shown = 0;
+        els.list.innerHTML = '';
+        els.count.textContent = fill(T.count, 'n', num.format(results.length));
+        if (results.length > 1) {
+            const vals = results.map((p) => p[2]).sort((a, b) => a - b);
+            els.stats.innerHTML = '';
+            [[T.median, median(vals)], [T.highest, vals[vals.length - 1]], [T.lowest, vals[0]]].forEach(([label, v]) => {
+                const span = document.createElement('span');
+                span.append(label + ' ');
+                const b = document.createElement('b');
+                b.textContent = usd.format(v);
+                span.append(b);
+                els.stats.append(span);
+            });
+        } else {
+            els.stats.textContent = '';
+        }
+        els.status.hidden = results.length > 0;
+        els.status.textContent = T.none;
+        more();
+        syncUrl();
+    }
+
+    function nameBlock(zh, en, title, onClick, state) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'earn-link earn-name';
+        btn.title = title;
+        const z = document.createElement('div');
+        z.className = 'zh';
+        z.textContent = zh;
+        if (state) {
+            const s = document.createElement('span');
+            s.className = 'earn-state';
+            s.textContent = state;
+            z.append(s);
+        }
+        const e = document.createElement('div');
+        e.className = 'en';
+        e.textContent = en;
+        btn.append(z, e);
+        btn.addEventListener('click', onClick);
+        return btn;
+    }
+
+    function more() {
+        const frag = document.createDocumentFragment();
+        const end = Math.min(results.length, shown + PAGE);
+        for (let i = shown; i < end; i++) {
+            const p = results[i];
+            const s = data.schools[p[0]], m = data.majors[p[1]];
+            const li = document.createElement('li');
+            li.className = 'earn-item';
+
+            li.append(nameBlock(s[1], s[0], T.filterSchool, () => pick('school', p[0]), s[2]));
+            li.append(nameBlock(m[1], m[0], T.filterMajor, () => pick('major', p[1])));
+
+            const money = document.createElement('div');
+            money.className = 'earn-money';
+            const amt = document.createElement('div');
+            amt.className = 'amt';
+            amt.textContent = usd.format(p[2]);
+            const small = document.createElement('small');
+            small.textContent = T.perYear;
+            amt.append(small);
+            const bar = document.createElement('div');
+            bar.className = 'earn-bar';
+            const fillBar = document.createElement('span');
+            fillBar.style.width = Math.min(100, p[2] / BAR_MAX * 100).toFixed(1) + '%';
+            bar.append(fillBar);
+            const meta = document.createElement('div');
+            meta.className = 'earn-meta';
+            meta.textContent = fill(T.cohort, 'n', num.format(p[5])) +
+                (p[6] != null ? ' · ' + fill(T.netPrice, 'v', usd.format(p[6])) : '');
+            money.append(amt, bar, meta);
+            if (!p[4]) {
+                const flag = document.createElement('div');
+                flag.className = 'earn-flag';
+                flag.textContent = T.below;
+                money.append(flag);
+            }
+            li.append(money);
+            frag.append(li);
+        }
+        els.list.append(frag);
+        shown = end;
+        els.more.hidden = shown >= results.length;
+    }
+
+    function pick(kind, id) {
+        if (kind === 'school') {
+            const s = data.schools[id];
+            schoolId = id;
+            els.school.value = (LANG === 'zh' ? s[1] : s[0]) + ' (' + s[2] + ')';
+        } else {
+            const m = data.majors[id];
+            majorId = id;
+            els.major.value = LANG === 'zh' ? m[1] : m[0];
+        }
+        run();
+        els.count.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function syncUrl() {
+        const q = new URLSearchParams();
+        if (schoolId !== null) q.set('sid', data.schools[schoolId][4]);
+        else if (els.school.value.trim()) q.set('school', els.school.value.trim());
+        if (majorId !== null) q.set('cip', data.majors[majorId][2]);
+        else if (els.major.value.trim()) q.set('major', els.major.value.trim());
+        if (els.state.value) q.set('state', els.state.value);
+        if (els.sort.value !== 'high') q.set('sort', els.sort.value);
+        const qs = q.toString();
+        history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+    }
+
+    function restoreUrl() {
+        const q = new URLSearchParams(location.search);
+        els.state.value = q.get('state') || '';
+        if (q.get('sort')) els.sort.value = q.get('sort');
+        const sid = data.schools.findIndex((s) => s[4] === q.get('sid'));
+        if (sid >= 0) { const s = data.schools[sid]; schoolId = sid; els.school.value = (LANG === 'zh' ? s[1] : s[0]) + ' (' + s[2] + ')'; }
+        else els.school.value = q.get('school') || '';
+        const mid = data.majors.findIndex((m) => m[2] === q.get('cip'));
+        if (mid >= 0) { const m = data.majors[mid]; majorId = mid; els.major.value = LANG === 'zh' ? m[1] : m[0]; }
+        else els.major.value = q.get('major') || '';
+    }
+
+    let timer;
+    const debounced = () => { clearTimeout(timer); timer = setTimeout(run, 150); };
+    els.school.addEventListener('input', () => { schoolId = null; debounced(); });
+    els.major.addEventListener('input', () => { majorId = null; debounced(); });
+    els.state.addEventListener('change', run);
+    els.sort.addEventListener('change', run);
+    els.more.addEventListener('click', more);
+    els.reset.addEventListener('click', () => {
+        schoolId = majorId = null;
+        els.school.value = els.major.value = els.state.value = '';
+        els.sort.value = 'high';
+        run();
+        els.school.focus();
+    });
+
+    fetch('/data/earnings.json')
+        .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then((d) => {
+            data = d;
+            schoolHay = data.schools.map((s) => norm([s[0], s[1], s[2], s[3]].join(' ')));
+            majorHay = data.majors.map((m) => norm([m[0], m[1], m[2]].join(' ')));
+            const states = [...new Set(data.schools.map((s) => s[2]))].sort();
+            states.forEach((st) => els.state.add(new Option(st, st)));
+            restoreUrl();
+            run();
+        })
+        .catch(() => { els.status.textContent = T.loadError; });
+})();
+</script>
+{{ end }}

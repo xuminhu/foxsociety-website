@@ -257,6 +257,12 @@
         }
 
         /* 响应式 */
+        @media (max-width: 1100px) {
+            .nav-menu {
+                gap: 24px;
+            }
+        }
+
         .mobile-menu-btn .icon-close {
             display: none;
         }
@@ -370,6 +376,7 @@
                 <li><a href="{{ site.Home.RelPermalink }}" class="{{ if .IsHome }}active{{ end }}">{{ i18n "navHome" }}</a></li>
                 <li><a href="{{ "services/" | relLangURL }}" class="{{ if eq .Section "services" }}active{{ end }}">{{ i18n "navServices" }}</a></li>
                 <li><a href="{{ "cases/" | relLangURL }}" class="{{ if eq .Section "cases" }}active{{ end }}">{{ i18n "navCases" }}</a></li>
+                <li><a href="{{ "earnings/" | relLangURL }}" class="{{ if eq .Type "earnings" }}active{{ end }}">{{ i18n "navEarnings" }}</a></li>
                 <li><a href="{{ "about/" | relLangURL }}" class="{{ if eq .RelPermalink ("about/" | relLangURL) }}active{{ end }}">{{ i18n "navAbout" }}</a></li>
                 <li><a href="{{ "contact/" | relLangURL }}" class="{{ if eq .RelPermalink ("contact/" | relLangURL) }}active{{ end }}">{{ i18n "navContact" }}</a></li>
             </ul>

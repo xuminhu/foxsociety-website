@@ -87,6 +87,17 @@ date: 2024-01-01
 - **案例、服务等页面**：在 `content/en/` 下用**相同的路径和文件名**创建英文版本，例如 `content/zh/cases/li-beijing.md` 对应 `content/en/cases/li-beijing.md`。文件名相同，语言切换按钮才能跳到对应页面。英文案例中的 `direction`、`schools` 等字段请填写英文。
 - **首页、关于我们、联系我们、服务总览页**：这些页面的文字写在 `i18n/zh.toml` 和 `i18n/en.toml` 中，修改时两个文件要同时更新（两个文件的 key 必须一致）。
 
+## 专业收入查询（/earnings/）
+
+页面模板为 `layouts/earnings/single.html`，数据文件为 `static/data/earnings.json`，由脚本根据 NYT / HEA Group 的 Excel 数据表生成：
+
+```bash
+pip install openpyxl
+python3 tools/earnings/build_data.py path/to/NYT_HEA_Major_Earnings.xlsx
+```
+
+学校和专业的中文名分别在 `tools/earnings/schools_zh.tsv`（按 OPEID6）和 `tools/earnings/majors_zh.tsv`（按 CIP4）中维护。更新数据时如有新学校或新专业缺少中文名，脚本会列出并退出，补充翻译后重新运行即可。
+
 ## 自动部署
 
 推送到 `main` 分支自动触发部署到腾讯云 COS。
