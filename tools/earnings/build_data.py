@@ -1,12 +1,14 @@
-"""Build static/data/earnings.json from the NYT / HEA Group major-earnings workbook.
+"""Build static/major-earnings.html from the NYT / HEA Group major-earnings workbook.
 
 Usage:
     python3 tools/earnings/build_data.py path/to/NYT_HEA_Major_Earnings.xlsx
 
-Chinese names live in schools_zh.tsv (keyed by OPEID6) and majors_zh.tsv
-(keyed by CIP4). The script fails if any school or major is missing a
+The page is template.html with the data embedded as a scrambled blob, so it
+is not readable as plain text in the page source. Chinese names live in
+schools_zh.tsv (keyed by OPEID6) and majors_zh.tsv (keyed by CIP4). The script fails if any school or major is missing a
 Chinese name, so new rows in a future workbook must be translated first.
 """
+import base64
 import json
 import os
 import sys
@@ -14,7 +16,9 @@ import sys
 import openpyxl
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, '..', '..', 'static', 'data', 'earnings.json')
+OUT = os.path.join(HERE, '..', '..', 'static', 'major-earnings.html')
+TEMPLATE = os.path.join(HERE, 'template.html')
+SEED = 0x5F0C2026
 
 # The workbook truncates a few CIP titles; use the full NCES names instead.
 MAJOR_NAME_FIXES = {
@@ -82,6 +86,7 @@ def main(path):
                 school_zh.get(opeid, ''),
                 r[col['State']],
                 SCHOOL_ALIASES.get(opeid, ''),
+                net_price(r[col['Net Price']]),
                 opeid,
             ])
         if cip not in major_idx:
@@ -93,15 +98,12 @@ def main(path):
                 major_zh.get(cip, ''),
                 cip,
             ])
-        net = r[col['Net Price']]
         programs.append([
             school_idx[opeid],
             major_idx[cip],
             r[col['Median Earnings 4 Yrs After Completion']],
-            r[col['Earnings Benchmark (HS Median)']],
             1 if r[col['Pass/Fail']] == 'Pass' else 0,
             r[col['# Completers in Earnings Cohort']],
-            net if isinstance(net, (int, float)) else None,
         ])
 
     if missing:
@@ -109,22 +111,35 @@ def main(path):
             print(f'missing Chinese name for {kind} {key}: {name}', file=sys.stderr)
         sys.exit(1)
 
+    # Programs ship sorted by earnings (high to low) and flattened, 5 numbers each:
+    # school index, major index, median earnings, passes HS benchmark, cohort size.
+    # Schools: name, Chinese name, state, aliases, net price, OPEID6.
+    # Majors: name, Chinese name, CIP4.
     programs.sort(key=lambda p: -p[2])
-    data = {
-        'fields': {
-            'schools': ['name', 'nameZh', 'state', 'aliases', 'opeid6'],
-            'majors': ['name', 'nameZh', 'cip4'],
-            'programs': ['school', 'major', 'medianEarnings', 'hsBenchmark',
-                         'passesBenchmark', 'cohortSize', 'netPrice'],
-        },
-        'schools': schools,
-        'majors': majors,
-        'programs': programs,
-    }
+    data = {'s': schools, 'm': majors, 'p': [v for p in programs for v in p]}
+    raw = json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+
+    with open(TEMPLATE, encoding='utf-8') as f:
+        html = f.read()
+    html = html.replace('__SEED__', str(SEED)).replace('__PAYLOAD__', scramble(raw))
     with open(OUT, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
+        f.write(html)
     print(f'wrote {len(programs)} programs, {len(schools)} schools, '
           f'{len(majors)} majors to {os.path.normpath(OUT)}')
+
+
+def net_price(value):
+    return value if isinstance(value, (int, float)) else None
+
+
+def scramble(raw):
+    # Must match decode() in template.html (32-bit LCG keystream, XOR, base64).
+    k = SEED
+    out = bytearray(len(raw))
+    for i, b in enumerate(raw):
+        k = (k * 1103515245 + 12345) & 0xFFFFFFFF
+        out[i] = b ^ ((k >> 16) & 0xFF)
+    return base64.b64encode(bytes(out)).decode('ascii')
 
 
 def load_tsv(name):
